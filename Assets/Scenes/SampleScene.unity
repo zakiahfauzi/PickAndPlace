@@ -336,6 +336,7 @@ GameObject:
   - component: {fileID: 292236591}
   - component: {fileID: 292236590}
   - component: {fileID: 292236598}
+  - component: {fileID: 292236599}
   m_Layer: 0
   m_Name: BlueCube4
   m_TagString: Untagged
@@ -544,6 +545,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _returnTime: 2
+--- !u!114 &292236599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292236589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb5261d7cd290b4eacc0fd20e2db09f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactableView: {fileID: 292236591}
+  _renderer: {fileID: 292236595}
+  _normalColor: {r: 0.03529412, g: 0.09803922, b: 0.9843137, a: 1}
+  _hoverColor: {r: 0.03529412, g: 0.09803922, b: 0.9843137, a: 1}
+  _selectColor: {r: 0, g: 1, b: 0, a: 1}
+  _disabledColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &303759419
 GameObject:
   m_ObjectHideFlags: 0
@@ -734,6 +753,7 @@ GameObject:
   - component: {fileID: 489948431}
   - component: {fileID: 489948432}
   - component: {fileID: 489948433}
+  - component: {fileID: 489948434}
   m_Layer: 0
   m_Name: BlueCube
   m_TagString: Untagged
@@ -942,6 +962,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _returnTime: 2
+--- !u!114 &489948434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 489948424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb5261d7cd290b4eacc0fd20e2db09f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactableView: {fileID: 489948431}
+  _renderer: {fileID: 489948428}
+  _normalColor: {r: 0.03529412, g: 0.09803922, b: 0.9843137, a: 1}
+  _hoverColor: {r: 0.03529412, g: 0.09803922, b: 0.9843137, a: 1}
+  _selectColor: {r: 0, g: 1, b: 0, a: 1}
+  _disabledColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!4 &606382786 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7192818547691459740, guid: f39a9d103c4129b42a53567f6cd8356a, type: 3}
@@ -1619,6 +1657,7 @@ GameObject:
   - component: {fileID: 745660173}
   - component: {fileID: 745660172}
   - component: {fileID: 745660180}
+  - component: {fileID: 745660181}
   m_Layer: 0
   m_Name: BlueCube3
   m_TagString: Untagged
@@ -1827,6 +1866,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _returnTime: 2
+--- !u!114 &745660181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 745660171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb5261d7cd290b4eacc0fd20e2db09f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactableView: {fileID: 745660173}
+  _renderer: {fileID: 745660177}
+  _normalColor: {r: 0.03529412, g: 0.09803922, b: 0.9843137, a: 1}
+  _hoverColor: {r: 0.03529412, g: 0.09803922, b: 0.9843137, a: 1}
+  _selectColor: {r: 0, g: 1, b: 0, a: 1}
+  _disabledColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1001 &769718573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3250,6 +3307,7 @@ GameObject:
   - component: {fileID: 1293220177}
   - component: {fileID: 1293220176}
   - component: {fileID: 1293220184}
+  - component: {fileID: 1293220185}
   m_Layer: 0
   m_Name: BlueCube2
   m_TagString: Untagged
@@ -3458,6 +3516,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _returnTime: 2
+--- !u!114 &1293220185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293220175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bb5261d7cd290b4eacc0fd20e2db09f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactableView: {fileID: 1293220177}
+  _renderer: {fileID: 1293220181}
+  _normalColor: {r: 0.03529412, g: 0.09803922, b: 0.9843137, a: 1}
+  _hoverColor: {r: 0.03529412, g: 0.09803922, b: 0.9843137, a: 1}
+  _selectColor: {r: 0, g: 1, b: 0, a: 1}
+  _disabledColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!1 &1327591681
 GameObject:
   m_ObjectHideFlags: 0

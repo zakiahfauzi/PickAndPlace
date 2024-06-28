@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4257412417454173059}
   - component: {fileID: 4257412417454173058}
   m_Layer: 0
-  m_Name: Interactable Velocity Tapered Cylinder
+  m_Name: Interactable Velocity Pot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

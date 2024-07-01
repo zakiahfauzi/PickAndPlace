@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 123585161}
   - component: {fileID: 123585160}
   - component: {fileID: 123585158}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -778,7 +778,7 @@ GameObject:
   - component: {fileID: 174790398}
   - component: {fileID: 174790400}
   - component: {fileID: 174790399}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -914,7 +914,7 @@ GameObject:
   - component: {fileID: 213056566}
   - component: {fileID: 213056568}
   - component: {fileID: 213056567}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1071,7 +1071,7 @@ GameObject:
   - component: {fileID: 313160637}
   - component: {fileID: 313160639}
   - component: {fileID: 313160638}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Main Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1760,7 +1760,7 @@ GameObject:
   - component: {fileID: 688193525}
   - component: {fileID: 688193527}
   - component: {fileID: 688193526}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2877,7 +2877,7 @@ GameObject:
   - component: {fileID: 1076119999}
   - component: {fileID: 1076119998}
   - component: {fileID: 1076119997}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Level 1 Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4360,7 +4360,7 @@ GameObject:
   - component: {fileID: 1603806155}
   - component: {fileID: 1603806154}
   - component: {fileID: 1603806153}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Level 2 Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5358,7 +5358,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2093045117}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

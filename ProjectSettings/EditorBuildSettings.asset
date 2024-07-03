@@ -7,13 +7,13 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
-    guid: ca4b3a6e8ce2bcb4e9eb440f922f2cc3
+    guid: ac8b49cc9d4be9240a8be90a5eaf11c8
   - enabled: 1
     path: Assets/Scenes/Level01.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/Level02.unity
-    guid: 0f39acd1ab380874aab71e7db7fc56ef
+    guid: 5e07a43f5a7bfca41b611df0cbcf2885
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 972ebb5fed9340b43bf83f65fe47c81d, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 7886dbbbac079d44481edf8c3fba5677, type: 2}

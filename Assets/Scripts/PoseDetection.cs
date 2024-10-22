@@ -74,6 +74,7 @@ namespace Oculus.Interaction.Samples
 
             // Fire event with the detected gesture
             string detectedGesture = _poses[poseNumber].name; // Get the name of the gesture
+            Debug.Log("Detected Gesture: " + detectedGesture); // Debug: Log detected gesture
             GestureDetected?.Invoke(detectedGesture); // Trigger event with detected gesture
         }
 

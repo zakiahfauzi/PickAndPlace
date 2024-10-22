@@ -7,6 +7,7 @@ public class RockPaperScissors : MonoBehaviour
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI enemyGestureText;
     public TextMeshProUGUI resultText;
+    public TextMeshProUGUI playerGestureText; // New TextMeshPro for player gesture
 
     public float countdownTime = 3f;
     private float countdown;
@@ -40,6 +41,9 @@ public class RockPaperScissors : MonoBehaviour
         {
             RunCountdown();
         }
+
+        // Debug: Show player's gesture on the enemy gesture text UI
+        playerGestureText.text = "Player Gesture (Debug): " + playerGesture;
     }
 
     void StartNewRound()
@@ -68,13 +72,21 @@ public class RockPaperScissors : MonoBehaviour
     {
         enemyGestureText.text = "Enemy Gesture: " + enemyGesture;
 
-        if (playerGesture == enemyGesture)
+        if ((playerGesture == "RockPoseLeft" && enemyGesture == "Rock") ||
+            (playerGesture == "RockPoseRight" && enemyGesture == "Rock") ||
+            (playerGesture == "PaperLeft" && enemyGesture == "Paper") ||
+            (playerGesture == "PaperRight" && enemyGesture == "Paper") ||
+            (playerGesture == "ScissorsLeft" && enemyGesture == "Scissors") ||
+            (playerGesture == "ScissorsRight" && enemyGesture == "Scissors"))
         {
             resultText.text = "Draw!";
         }
-        else if ((playerGesture == "Rock" && enemyGesture == "Scissors") ||
-                 (playerGesture == "Paper" && enemyGesture == "Rock") ||
-                 (playerGesture == "Scissors" && enemyGesture == "Paper"))
+        else if ((playerGesture == "RockPoseLeft" && enemyGesture == "Scissors") ||
+                 (playerGesture == "RockPoseRight" && enemyGesture == "Scissors") ||
+                 (playerGesture == "PaperLeft" && enemyGesture == "Rock") ||
+                 (playerGesture == "PaperRight" && enemyGesture == "Rock") ||
+                 (playerGesture == "ScissorsLeft" && enemyGesture == "Paper") ||
+                 (playerGesture == "ScissorsRight" && enemyGesture == "Paper"))
         {
             resultText.text = "You Win!";
         }
@@ -90,6 +102,7 @@ public class RockPaperScissors : MonoBehaviour
     void OnGestureDetected(string gesture)
     {
         playerGesture = gesture; // Update the player's gesture
+        Debug.Log("Player Gesture: " + playerGesture); // Debug: Log player gesture
     }
 }
 

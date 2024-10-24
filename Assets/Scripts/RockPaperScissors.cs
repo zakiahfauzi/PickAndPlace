@@ -17,6 +17,15 @@ public class RockPaperScissors : MonoBehaviour
 
     private string playerGesture; // To store the player's detected gesture
 
+    // Reference to hand models
+    public GameObject Rock;
+    public GameObject Paper;
+    public GameObject Scissors;
+
+    // Materials for inactive and active colors
+    public Material inactiveMaterial;
+    public Material activeMaterial;
+
     void OnEnable()
     {
         // Subscribe to the gesture detection event
@@ -42,8 +51,8 @@ public class RockPaperScissors : MonoBehaviour
             RunCountdown();
         }
 
-        // Debug: Show player's gesture on the enemy gesture text UI
-        playerGestureText.text = "Player Gesture (Debug): " + playerGesture;
+        // Show player's gesture on the enemy gesture text UI
+        playerGestureText.text = "Player Gesture: " + playerGesture;
     }
 
     void StartNewRound()
@@ -53,6 +62,9 @@ public class RockPaperScissors : MonoBehaviour
         enemyGesture = gestures[Random.Range(0, gestures.Length)];
         enemyGestureText.text = "Enemy Gesture: ???";
         gameActive = true;
+
+        //Reset all hand models to the inactive color
+        ResetHandModelColors();
     }
 
     void RunCountdown()
@@ -71,6 +83,9 @@ public class RockPaperScissors : MonoBehaviour
     void ShowResult()
     {
         enemyGestureText.text = "Enemy Gesture: " + enemyGesture;
+
+        // Highlight the corresponding hand model for the computer gesture
+        HighlightComputerGesture();
 
         if ((playerGesture == "RockPoseLeft" && enemyGesture == "Rock") ||
             (playerGesture == "RockPoseRight" && enemyGesture == "Rock") ||
@@ -103,6 +118,31 @@ public class RockPaperScissors : MonoBehaviour
     {
         playerGesture = gesture; // Update the player's gesture
         Debug.Log("Player Gesture: " + playerGesture); // Debug: Log player gesture
+    }
+
+    // Highlight the hand model based on the computer's gesture
+    void HighlightComputerGesture()
+    {
+        if (enemyGesture == "Rock")
+        {
+            Rock.GetComponent<Renderer>().material = activeMaterial; // Change color to active
+        }
+        else if (enemyGesture == "Paper")
+        {
+            Paper.GetComponent<Renderer>().material = activeMaterial; // Change color to active
+        }
+        else if (enemyGesture == "Scissors")
+        {
+            Scissors.GetComponent<Renderer>().material = activeMaterial; // Change color to active
+        }
+    }
+
+    // Reset the colors of all hand models to inactive
+    void ResetHandModelColors()
+    {
+        Rock.GetComponent<Renderer>().material = inactiveMaterial;
+        Paper.GetComponent<Renderer>().material = inactiveMaterial;
+        Scissors.GetComponent<Renderer>().material = inactiveMaterial;
     }
 }
 

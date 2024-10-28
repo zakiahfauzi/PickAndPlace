@@ -7,15 +7,16 @@ public class RockPaperScissors : MonoBehaviour
     public TextMeshProUGUI countdownText;
     public TextMeshProUGUI enemyGestureText;
     public TextMeshProUGUI resultText;
-    public TextMeshProUGUI playerGestureText; // New TextMeshPro for player gesture
+    public TextMeshProUGUI playerGestureText; 
+    public TextMeshProUGUI playerScoreText; 
+    public TextMeshProUGUI enemyScoreText;
 
     public float countdownTime = 3f;
     private float countdown;
     private bool gameActive = false;
     private string[] gestures = { "Rock", "Paper", "Scissors" };
     private string enemyGesture;
-
-    private string playerGesture; // To store the player's detected gesture
+    private string playerGesture;
 
     // Reference to hand models
     public GameObject Rock;
@@ -25,6 +26,16 @@ public class RockPaperScissors : MonoBehaviour
     // Materials for inactive and active colors
     public Material inactiveMaterial;
     public Material activeMaterial;
+
+    // Score tracking
+    private int playerScore = 0;
+    private int enemyScore = 0;
+
+    // New sound variables
+    public AudioClip countdownClip; // Sound for each countdown tick
+    public AudioClip winClip;       // Sound for winning
+    public AudioClip loseClip;       // Sound for loosing
+    private AudioSource audioSource; // AudioSource component
 
     void OnEnable()
     {
@@ -41,7 +52,11 @@ public class RockPaperScissors : MonoBehaviour
     void Start()
     {
         countdown = countdownTime;
+        UpdateScoreUI();
         StartNewRound();
+
+        // Set up the audio source
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     void Update()
@@ -69,6 +84,12 @@ public class RockPaperScissors : MonoBehaviour
 
     void RunCountdown()
     {
+        if (Mathf.Ceil(countdown) != Mathf.Ceil(countdown - Time.deltaTime) && countdown > 0)
+        {
+            // Play countdown sound on each tick
+            audioSource.PlayOneShot(countdownClip);
+        }
+
         countdown -= Time.deltaTime;
         countdownText.text = "Time: " + Mathf.Ceil(countdown).ToString();
 
@@ -104,12 +125,17 @@ public class RockPaperScissors : MonoBehaviour
                  (playerGesture == "ScissorsRight" && enemyGesture == "Paper"))
         {
             resultText.text = "You Win!";
+            playerScore++;
+            audioSource.PlayOneShot(winClip); // Play win soun
         }
         else
         {
             resultText.text = "You Lose!";
+            enemyScore++;
+            audioSource.PlayOneShot(loseClip); // Play win soun
         }
 
+        UpdateScoreUI(); // Update the score display
         Invoke("StartNewRound", 3f); // Start a new round after a delay
     }
 
@@ -143,6 +169,13 @@ public class RockPaperScissors : MonoBehaviour
         Rock.GetComponent<Renderer>().material = inactiveMaterial;
         Paper.GetComponent<Renderer>().material = inactiveMaterial;
         Scissors.GetComponent<Renderer>().material = inactiveMaterial;
+    }
+
+    // Update the score UI for both player and enemy
+    void UpdateScoreUI()
+    {
+        playerScoreText.text = "Player Score: " + playerScore;
+        enemyScoreText.text = "Enemy Score: " + enemyScore;
     }
 }
 

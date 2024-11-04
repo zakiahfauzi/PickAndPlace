@@ -5907,9 +5907,9 @@ MonoBehaviour:
   Scissors: {fileID: 1241771534}
   inactiveMaterial: {fileID: 2100000, guid: 7f2d1c6b2041eb94abd22bdc54bacf51, type: 2}
   activeMaterial: {fileID: 2100000, guid: b0a58450882d3a144ac5c3dba17c6971, type: 2}
-  countdownClip: {fileID: 8300000, guid: e17c733f926840643b71de6cc1cd7e7b, type: 3}
-  winClip: {fileID: 0}
-  loseClip: {fileID: 0}
+  countdownClip: {fileID: 8300000, guid: 65758301783c4574f9434480495d1448, type: 3}
+  winClip: {fileID: 8300000, guid: e83b43eeb879c6940b452bc7392f2bb7, type: 3}
+  loseClip: {fileID: 8300000, guid: e83b43eeb879c6940b452bc7392f2bb7, type: 3}
 --- !u!1 &1698131850
 GameObject:
   m_ObjectHideFlags: 0

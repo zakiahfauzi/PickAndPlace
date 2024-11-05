@@ -3751,7 +3751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2859147190566827361, guid: bf018bf093319f840a7314cb25167d8c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.021
+      value: 1.075
       objectReference: {fileID: 0}
     - target: {fileID: 2859147190566827361, guid: bf018bf093319f840a7314cb25167d8c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3775,7 +3775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2859147190566827361, guid: bf018bf093319f840a7314cb25167d8c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.127
+      value: 0.261
       objectReference: {fileID: 0}
     - target: {fileID: 2859147190566827361, guid: bf018bf093319f840a7314cb25167d8c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4874,7 +4874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1293213027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5908,8 +5908,8 @@ MonoBehaviour:
   inactiveMaterial: {fileID: 2100000, guid: 7f2d1c6b2041eb94abd22bdc54bacf51, type: 2}
   activeMaterial: {fileID: 2100000, guid: b0a58450882d3a144ac5c3dba17c6971, type: 2}
   countdownClip: {fileID: 8300000, guid: 65758301783c4574f9434480495d1448, type: 3}
-  winClip: {fileID: 8300000, guid: e83b43eeb879c6940b452bc7392f2bb7, type: 3}
-  loseClip: {fileID: 8300000, guid: e83b43eeb879c6940b452bc7392f2bb7, type: 3}
+  winClip: {fileID: 8300000, guid: 9e5654d8206b6034f9e637b453595fcc, type: 3}
+  loseClip: {fileID: 8300000, guid: c5919ef21c6033949852b3423906893e, type: 3}
 --- !u!1 &1698131850
 GameObject:
   m_ObjectHideFlags: 0
@@ -6122,7 +6122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2859147190566827361, guid: bf018bf093319f840a7314cb25167d8c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.927
+      value: 0.981
       objectReference: {fileID: 0}
     - target: {fileID: 2859147190566827361, guid: bf018bf093319f840a7314cb25167d8c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6146,7 +6146,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2859147190566827361, guid: bf018bf093319f840a7314cb25167d8c, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.105
+      value: 0.029000007
       objectReference: {fileID: 0}
     - target: {fileID: 2859147190566827361, guid: bf018bf093319f840a7314cb25167d8c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6222,7 +6222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2859147191208444807, guid: bf018bf093319f840a7314cb25167d8c, type: 3}
       propertyPath: m_text
-      value: 'Computer :'
+      value: 'Player :'
       objectReference: {fileID: 0}
     - target: {fileID: 2859147191208444807, guid: bf018bf093319f840a7314cb25167d8c, type: 3}
       propertyPath: m_HorizontalAlignment

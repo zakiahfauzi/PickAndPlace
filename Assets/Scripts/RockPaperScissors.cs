@@ -139,7 +139,7 @@ public class RockPaperScissors : MonoBehaviour
         {
             resultText.text = "You Lose!";
             enemyScore++;
-            audioSource.PlayOneShot(loseClip); // Play lose sound
+            audioSource.PlayOneShot(loseClip); // Play win soun
         }
 
         UpdateScoreUI(); // Update the score display

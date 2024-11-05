@@ -37,6 +37,9 @@ public class RockPaperScissors : MonoBehaviour
     public AudioClip loseClip;       // Sound for loosing
     private AudioSource audioSource; // AudioSource component
 
+    // Variable to track the last second for countdown sound
+    private int lastCountdownSecond = -1;
+
     void OnEnable()
     {
         // Subscribe to the gesture detection event
@@ -84,10 +87,13 @@ public class RockPaperScissors : MonoBehaviour
 
     void RunCountdown()
     {
-        if (Mathf.Ceil(countdown) != Mathf.Ceil(countdown - Time.deltaTime) && countdown > 0)
+        int currentSecond = Mathf.CeilToInt(countdown); // Convert countdown to an integer for exact timing
+
+        // Play countdown sound only once per second (at 3, 2, and 1)
+        if (currentSecond > 0 && currentSecond != lastCountdownSecond)
         {
-            // Play countdown sound on each tick
-            audioSource.PlayOneShot(countdownClip);
+            audioSource.PlayOneShot(countdownClip); // Play countdown sound
+            lastCountdownSecond = currentSecond; // Update the last played second
         }
 
         countdown -= Time.deltaTime;
@@ -97,6 +103,7 @@ public class RockPaperScissors : MonoBehaviour
         {
             countdown = 0;
             gameActive = false;
+            lastCountdownSecond = -1; // Reset for the next round
             ShowResult();
         }
     }
@@ -126,13 +133,13 @@ public class RockPaperScissors : MonoBehaviour
         {
             resultText.text = "You Win!";
             playerScore++;
-            audioSource.PlayOneShot(winClip); // Play win soun
+            audioSource.PlayOneShot(winClip); // Play win sound
         }
         else
         {
             resultText.text = "You Lose!";
             enemyScore++;
-            audioSource.PlayOneShot(loseClip); // Play win soun
+            audioSource.PlayOneShot(loseClip); // Play lose sound
         }
 
         UpdateScoreUI(); // Update the score display

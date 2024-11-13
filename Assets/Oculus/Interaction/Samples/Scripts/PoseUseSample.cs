@@ -32,7 +32,7 @@ namespace Oculus.Interaction.Samples
         private IHmd Hmd { get; set; }
 
         [SerializeField]
-        private ActiveStateSelector[] _poses;
+        public ActiveStateSelector[] _poses;
 
         [SerializeField]
         private Material[] _onSelectIcons;

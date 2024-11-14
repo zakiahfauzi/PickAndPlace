@@ -10,6 +10,7 @@ public class RockPaperScissors : MonoBehaviour
     public TextMeshProUGUI playerGestureText; 
     public TextMeshProUGUI playerScoreText; 
     public TextMeshProUGUI enemyScoreText;
+    public TextMeshProUGUI firstTo3Text;
 
     public float countdownTime = 3f;
     private float countdown;
@@ -40,6 +41,8 @@ public class RockPaperScissors : MonoBehaviour
     // Variable to track the last second for countdown sound
     private int lastCountdownSecond = -1;
 
+    private GameUIController gameUIController;
+
     void OnEnable()
     {
         // Subscribe to the gesture detection event
@@ -56,10 +59,15 @@ public class RockPaperScissors : MonoBehaviour
     {
         countdown = countdownTime;
         UpdateScoreUI();
-        StartNewRound();
 
         // Set up the audio source
         audioSource = gameObject.AddComponent<AudioSource>();
+
+        // Display the "First to 3 Wins!" message
+        firstTo3Text.text = "First to 3 Wins!";
+
+        // Find and assign the GameUIController for Play Again functionality
+        gameUIController = FindObjectOfType<GameUIController>();
     }
 
     void Update()
@@ -73,7 +81,7 @@ public class RockPaperScissors : MonoBehaviour
         playerGestureText.text = "Player Gesture: " + playerGesture;
     }
 
-    void StartNewRound()
+    public void StartNewRound()
     {
         resultText.text = "";
         countdown = countdownTime;
@@ -143,7 +151,37 @@ public class RockPaperScissors : MonoBehaviour
         }
 
         UpdateScoreUI(); // Update the score display
-        Invoke("StartNewRound", 3f); // Start a new round after a delay
+
+
+        // Check if either player or enemy has reached 3 points
+        if (playerScore >= 3 || enemyScore >= 3)
+        {
+            DeclareWinner();
+        }
+        else
+        {
+            Invoke("StartNewRound", 3f);
+        }
+    }
+
+    void DeclareWinner()
+    {
+        if (playerScore >= 3)
+        {
+            resultText.text = "Congratulations! You won the game!";
+        }
+        else if (enemyScore >= 3)
+        {
+            resultText.text = "Game Over! The enemy won the game!";
+        }
+
+        // Reset the scores after declaring a winner
+        playerScore = 0;
+        enemyScore = 0;
+        UpdateScoreUI();
+
+        // Show Play Again button through the GameUIController
+        gameUIController.ShowPlayAgain();
     }
 
     // This method is called when the gesture is detected
@@ -183,6 +221,15 @@ public class RockPaperScissors : MonoBehaviour
     {
         playerScoreText.text = "Player Score: " + playerScore;
         enemyScoreText.text = "Enemy Score: " + enemyScore;
+    }
+
+    // Method to reset the game when Play Again is clicked
+    public void ResetGame()
+    {
+        playerScore = 0;
+        enemyScore = 0;
+        UpdateScoreUI();
+        StartNewRound();
     }
 }
 

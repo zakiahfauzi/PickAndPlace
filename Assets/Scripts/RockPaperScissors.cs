@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using Oculus.Interaction.Samples;
+using System.IO;
 
 public class RockPaperScissors : MonoBehaviour
 {
@@ -41,6 +42,9 @@ public class RockPaperScissors : MonoBehaviour
     // Variable to track the last second for countdown sound
     private int lastCountdownSecond = -1;
 
+    // Variable to track total game time
+    private float totalTime = 0f;
+
     private GameUIController gameUIController;
 
     void OnEnable()
@@ -79,6 +83,11 @@ public class RockPaperScissors : MonoBehaviour
 
         // Show player's gesture on the enemy gesture text UI
         playerGestureText.text = "Player Gesture: " + playerGesture;
+
+        if (gameActive)
+        {
+            totalTime += Time.deltaTime;  // Keep track of the total game time
+        }
     }
 
     public void StartNewRound()
@@ -183,6 +192,21 @@ public class RockPaperScissors : MonoBehaviour
 
         // Show Play Again button through the GameUIController
         gameUIController.ShowPlayAgain();
+
+        // Save the total game time to a file when the game ends
+        SaveTimeToFile();
+    }
+
+    // Save the total time to a .txt file
+    private void SaveTimeToFile()
+    {
+        string filePath = "Assets/TotalTime.txt";  // Path to save the file
+        string timeToSave = "Total Time: " + totalTime.ToString("F2") + " seconds";  // Format the time
+
+        // Append the time to the file (or create the file if it doesn't exist)
+        File.AppendAllText(filePath, timeToSave + "\n");
+
+        Debug.Log("Time saved to file: " + timeToSave);
     }
 
     // This method is called when the gesture is detected
@@ -230,6 +254,7 @@ public class RockPaperScissors : MonoBehaviour
         playerScore = 0;
         enemyScore = 0;
         UpdateScoreUI();
+        totalTime = 0f;
         StartNewRound();
     }
 

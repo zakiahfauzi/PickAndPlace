@@ -118,6 +118,7 @@ public class RockPaperScissors : MonoBehaviour
 
     void ShowResult()
     {
+        Debug.Log("ShowResult called.");
         enemyGestureText.text = "Enemy Gesture: " + enemyGesture;
 
         // Highlight the corresponding hand model for the computer gesture

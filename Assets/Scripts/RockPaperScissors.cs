@@ -232,6 +232,11 @@ public class RockPaperScissors : MonoBehaviour
         UpdateScoreUI();
         StartNewRound();
     }
+
+    public bool IsGameActive()
+    {
+        return gameActive; // Returns true if the game is currently active
+    }
 }
 
 

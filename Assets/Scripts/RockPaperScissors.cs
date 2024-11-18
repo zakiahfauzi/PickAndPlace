@@ -98,6 +98,8 @@ public class RockPaperScissors : MonoBehaviour
         enemyGestureText.text = "Enemy Gesture: ???";
         gameActive = true;
 
+        HideAllHandModels();
+
         //Reset all hand models to the inactive color
         ResetHandModelColors();
     }
@@ -219,18 +221,32 @@ public class RockPaperScissors : MonoBehaviour
     // Highlight the hand model based on the computer's gesture
     void HighlightComputerGesture()
     {
+        // Hide all hand models first
+        HideAllHandModels();
+
         if (enemyGesture == "Rock")
         {
+            Rock.SetActive(true);
             Rock.GetComponent<Renderer>().material = activeMaterial; // Change color to active
         }
         else if (enemyGesture == "Paper")
         {
+            Paper.SetActive(true);
             Paper.GetComponent<Renderer>().material = activeMaterial; // Change color to active
         }
         else if (enemyGesture == "Scissors")
         {
+            Scissors.SetActive(true);
             Scissors.GetComponent<Renderer>().material = activeMaterial; // Change color to active
         }
+    }
+
+    // Hide all hand models
+    void HideAllHandModels()
+    {
+        Rock.SetActive(false);
+        Paper.SetActive(false);
+        Scissors.SetActive(false);
     }
 
     // Reset the colors of all hand models to inactive

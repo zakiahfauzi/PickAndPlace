@@ -1,3 +1,7 @@
 Frederic
 Total Time: 17.97 seconds
 Total Time: 38.95 seconds
+Total Time: 14.98 seconds
+Total Time: 8.97 seconds
+Total Time: 17.97 seconds
+Total Time: 21.00 seconds

@@ -1,14 +1,2 @@
 
 
-Level: 2
-Time Taken: 36.42913 seconds
-Wrong Poses: 1
-
-Level: 2
-Time Taken: 20.51661 seconds
-Wrong Poses: 0
-
-Level: 2
-Time Taken: 26.11988 seconds
-Wrong Poses: 1
-

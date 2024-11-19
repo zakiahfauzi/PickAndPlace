@@ -1,16 +1,14 @@
-Level: 2
-Time Taken: 43.12633 seconds
-Wrong Poses: 6
+
 
 Level: 2
-Time Taken: 31.33625 seconds
-Wrong Poses: 2
+Time Taken: 36.42913 seconds
+Wrong Poses: 1
 
 Level: 2
-Time Taken: 28.97678 seconds
-Wrong Poses: 4
+Time Taken: 20.51661 seconds
+Wrong Poses: 0
 
 Level: 2
-Time Taken: 33.13364 seconds
-Wrong Poses: 7
+Time Taken: 26.11988 seconds
+Wrong Poses: 1
 

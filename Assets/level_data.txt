@@ -1,0 +1,44 @@
+Level: 2
+Time Taken: 29.68258 seconds
+Wrong Poses: 7
+
+Level: 2
+Time Taken: 43.74014 seconds
+Wrong Poses: 99
+
+Level: 2
+Time Taken: 23.15864 seconds
+Wrong Poses: 10
+
+Level: 2
+Time Taken: 20.68032 seconds
+Wrong Poses: 10
+
+Level: 2
+Time Taken: 15.16909 seconds
+Wrong Poses: 14
+
+Level: 2
+Time Taken: 16.96753 seconds
+Wrong Poses: 20
+
+Level: 2
+Time Taken: 14.97428 seconds
+Wrong Poses: 29
+
+Level: 2
+Time Taken: 18.4281 seconds
+Wrong Poses: 14
+
+Level: 2
+Time Taken: 19.25491 seconds
+Wrong Poses: 19
+
+Level: 2
+Time Taken: 16.99842 seconds
+Wrong Poses: 8
+
+Level: 2
+Time Taken: 20.4197 seconds
+Wrong Poses: 21
+

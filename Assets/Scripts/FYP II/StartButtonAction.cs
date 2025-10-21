@@ -1,53 +1,55 @@
 using UnityEngine;
-using Oculus.Interaction;   // for InteractableUnityEventWrapper
-using UnityEngine.Events;
+using Oculus.Interaction;  // For poke interaction
 
 public class StartButtonAction : MonoBehaviour
 {
-    [Header("References")]
-    public GameManager gameManager; // assign in inspector
-    public InteractableUnityEventWrapper pokeInteractableWrapper;
+    [Header("Game References")]
+    public GameManager gameManager;  // Assign in Inspector
 
-    [Header("Optional Audio")]
+    [Header("Sound")]
     public AudioClip buttonClickSound;
     private AudioSource audioSource;
 
+    [Header("Oculus Interaction")]
+    public InteractableUnityEventWrapper pokeInteractableButtonWrapper;
+
     void Start()
     {
-        // Prepare sound
+        // Add audio source if needed
         if (buttonClickSound != null)
         {
             audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.clip = buttonClickSound;
         }
 
-        // Link poke button event
-        if (pokeInteractableWrapper != null)
+        // Subscribe to Oculus button press
+        if (pokeInteractableButtonWrapper != null)
         {
-            pokeInteractableWrapper.WhenSelect.AddListener(OnButtonPressed);
+            pokeInteractableButtonWrapper.WhenSelect.AddListener(OnButtonPressed);
         }
         else
         {
-            Debug.LogError("[StartButtonAction] Missing InteractableUnityEventWrapper!");
+            Debug.LogWarning("[StartButtonAction] InteractableUnityEventWrapper is missing!");
         }
     }
 
     private void OnButtonPressed()
     {
-        Debug.Log("[StartButtonAction] Start Button Pressed!");
+        Debug.Log("[StartButtonAction] Button Pressed!");
 
-        // Play sound
-        if (audioSource && buttonClickSound)
+        // Play sound if available
+        if (audioSource != null && buttonClickSound != null)
             audioSource.Play();
 
-        // Start game through GameManager
+        // Start the game
         if (gameManager != null)
         {
+            Debug.Log("[StartButtonAction] Calling GameManager.StartGame()");
             gameManager.StartGame();
         }
         else
         {
-            Debug.LogError("[StartButtonAction] GameManager not assigned!");
+            Debug.LogError("[StartButtonAction] GameManager reference missing!");
         }
     }
 }

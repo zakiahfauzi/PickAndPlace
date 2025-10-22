@@ -1,8 +1,8 @@
 ﻿<Solution>
   <Project Path="Meta.WitAi.Conduit.csproj" />
   <Project Path="Oculus.VR.csproj" />
-  <Project Path="Oculus.Interaction.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Oculus.Interaction.csproj" />
   <Project Path="Oculus.Interaction.Editor.csproj" />
   <Project Path="Oculus.Platform.csproj" />
   <Project Path="VoiceSDK.Telemetry.csproj" />

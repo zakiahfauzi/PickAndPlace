@@ -6,28 +6,37 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject); // Persist GameManager
+
         if (levelManager == null)
         {
             levelManager = FindObjectOfType<LevelManager>();
-            if (levelManager == null)
-                Debug.LogError("[GameManager] No LevelManager found in scene!");
+            if (levelManager != null)
+            {
+                DontDestroyOnLoad(levelManager.gameObject); // Persist LevelManager
+                Debug.Log("[GameManager] LevelManager found and persisted.");
+            }
             else
-                Debug.Log("[GameManager] LevelManager found automatically.");
+            {
+                Debug.LogError("[GameManager] No LevelManager found in scene!");
+            }
         }
     }
 
     public void StartGame()
     {
-        Debug.Log("[GameManager] StartGame() called.");
-
         if (levelManager == null)
         {
-            Debug.LogError("[GameManager] Cannot start game — LevelManager reference is null!");
-            return;
+            // Re-check just in case
+            levelManager = FindObjectOfType<LevelManager>();
+            if (levelManager == null)
+            {
+                Debug.LogError("[GameManager] Cannot start game — LevelManager reference is null!");
+                return;
+            }
         }
 
-        // Load Level01 (index 1 since MainMenu = 0)
-        Debug.Log("[GameManager] Attempting to load Level01 (index 1)...");
+        // Load Level01
         levelManager.LoadLevel(1);
     }
 }

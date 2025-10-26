@@ -1,75 +1,42 @@
 using UnityEngine;
 using UnityEngine.Rendering;
 
-[ExecuteAlways]
-public class CalmSadAtmosphere : MonoBehaviour
+public class ShadowAndFog_Sad : MonoBehaviour
 {
-    [Header("Light Settings")]
-    public Light mainLight; // Assign your main Directional Light
-    [Tooltip("Shadow tint color (hex) for cool mood")]
-    public string shadowHex = "708090"; // soft slate blue-gray
-    [Range(0f, 1f)]
-    public float ambientIntensity = 0.55f; // brighter ambient to keep scene visible
+    [Header("Skybox")]
+    public Material sadSkybox; // Optional, assign if you have one
+    public Light mainLight;    // Assign main directional light in Inspector
+    private bool applied = false;
 
-    [Header("Fog Settings")]
-    public string fogHex = "7F8C99"; // light misty blue-gray
-    public FogMode fogMode = FogMode.ExponentialSquared;
-    [Range(0f, 1f)]
-    public float fogDensity = 0.10f; // gentle fog instead of thick
-
-    void OnValidate() => ApplyMood();
-    void Start() => ApplyMood();
-
-    void ApplyMood()
+    void OnEnable()
     {
-        ApplyAmbientAndShadows();
-        ApplyFog();
-        ConfigureLight();
-    }
+        if (applied) return;
+        EnvironmentLightingManager.SaveGlobalSettings();
 
-    void ApplyAmbientAndShadows()
-    {
-        Color shadowColor = HexToColor(shadowHex);
+        if (sadSkybox != null) RenderSettings.skybox = sadSkybox;
         RenderSettings.ambientMode = AmbientMode.Flat;
-        RenderSettings.ambientLight = shadowColor * ambientIntensity;
-    }
-
-    void ConfigureLight()
-    {
-        if (mainLight == null) return;
-
-        // Keep it naturally bright but cool-toned
-        mainLight.color = new Color(0.8f, 0.86f, 0.92f); // soft cold daylight
-        mainLight.intensity = 1.0f; // maintain good illumination
-        mainLight.shadows = LightShadows.Soft;
-        mainLight.shadowStrength = 0.85f;
-        mainLight.lightmapBakeType = LightmapBakeType.Mixed;
-    }
-
-    void ApplyFog()
-    {
-        Color fogColor = HexToColor(fogHex);
+        RenderSettings.ambientLight = new Color(0.44f, 0.50f, 0.56f) * 0.55f; // #708090 * intensity
         RenderSettings.fog = true;
-        RenderSettings.fogColor = fogColor;
-        RenderSettings.fogMode = fogMode;
-        RenderSettings.fogDensity = fogDensity;
-    }
+        RenderSettings.fogColor = new Color(0.50f, 0.55f, 0.60f); // #7F8C99
+        RenderSettings.fogMode = FogMode.ExponentialSquared;
+        RenderSettings.fogDensity = 0.10f;
 
-    Color HexToColor(string hex)
-    {
-        if (string.IsNullOrEmpty(hex)) return Color.gray;
-        hex = hex.TrimStart('#');
-
-        if (hex.Length != 6)
+        if (mainLight != null)
         {
-            Debug.LogWarning("Invalid hex color, using gray instead.");
-            return Color.gray;
+            mainLight.color = new Color(0.8f, 0.86f, 0.92f);
+            mainLight.intensity = 1.0f;
+            mainLight.shadows = LightShadows.Soft;
+            mainLight.shadowStrength = 0.85f;
+            mainLight.lightmapBakeType = LightmapBakeType.Mixed;
         }
 
-        byte r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
-        byte g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
-        byte b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+        applied = true;
+    }
 
-        return new Color(r / 255f, g / 255f, b / 255f);
+    void OnDisable()
+    {
+        if (!applied) return;
+        EnvironmentLightingManager.RestoreGlobalSettings();
+        applied = false;
     }
 }

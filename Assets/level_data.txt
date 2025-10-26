@@ -42,3 +42,7 @@ Level: 2
 Time Taken: 20.4197 seconds
 Wrong Poses: 21
 
+Level: 2
+Time Taken: 52.50295 seconds
+Wrong Poses: 16
+

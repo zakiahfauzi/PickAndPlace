@@ -30,6 +30,9 @@ public class ONNXEmotionPredictor : MonoBehaviour, IEmotionSource
     [SerializeField] private float valence;
     [SerializeField] private float arousal;
 
+    public float Valence => valence;
+    public float Arousal => arousal;
+
     public (float valence, float arousal) GetValenceArousal() => (valence, arousal);
 
     void Start()

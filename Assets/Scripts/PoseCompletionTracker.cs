@@ -7,17 +7,10 @@ using Oculus.Interaction.Samples;
 
 public class PoseCompletionTracker : MonoBehaviour
 {
-    [SerializeField]
-    private PoseUseSample poseUseSampleScript;
-
-    [SerializeField]
-    private TextMeshProUGUI instructionText;
-
-    [SerializeField]
-    private TextMeshProUGUI successMessage;
-
-    [SerializeField]
-    private GameObject[] handModels;
+    [SerializeField] private PoseUseSample poseUseSampleScript;
+    [SerializeField] private TextMeshProUGUI instructionText;
+    [SerializeField] private TextMeshProUGUI successMessage;
+    [SerializeField] private GameObject[] handModels;
 
     private HashSet<int> completedPoses = new HashSet<int>();
     private int currentPoseIndex = -1;
@@ -32,6 +25,7 @@ public class PoseCompletionTracker : MonoBehaviour
 
         startTime = Time.time;
 
+        // Register pose event listeners
         for (int i = 0; i < poseUseSampleScript._poses.Length; i++)
         {
             int poseIndex = i;
@@ -44,9 +38,7 @@ public class PoseCompletionTracker : MonoBehaviour
     private void ShowNextPose()
     {
         foreach (var handModel in handModels)
-        {
             handModel.SetActive(false);
-        }
 
         if (completedPoses.Count >= handModels.Length)
         {
@@ -88,7 +80,6 @@ public class PoseCompletionTracker : MonoBehaviour
         successMessage.gameObject.SetActive(true);
         successMessage.text = "Success! All poses completed!\nProceeding to Level 3...";
 
-        // Move to Level 3 after 4 seconds
         Invoke(nameof(LoadNextLevel), 4f);
     }
 
@@ -100,13 +91,25 @@ public class PoseCompletionTracker : MonoBehaviour
     private void SaveLevelData()
     {
         float timeTaken = Time.time - startTime;
-        string filePath = Path.Combine(Application.dataPath, "level_data.txt");
 
-        string levelData = "Level: 2\n";
-        levelData += "Time Taken: " + timeTaken + " seconds\n";
-        levelData += "Wrong Poses: " + wrongPoses + "\n";
+        // Create unique timestamp for filename
+        string ts = System.DateTime.Now.ToString("yyyyMMdd_HHmmss");
+        string fileName = $"Level02_{ts}.txt";
+        string filePath = Path.Combine(Application.persistentDataPath, fileName);
 
-        File.AppendAllText(filePath, levelData + "\n");
-        Debug.Log("Level data saved to: " + filePath);
+        string content = $"Level: 2\n";
+        content += $"Time Taken: {timeTaken:F2} seconds ({timeTaken / 60f:F2} minutes)\n";
+        content += $"Wrong Poses: {wrongPoses}\n";
+        content += $"Timestamp: {ts}\n";
+
+        try
+        {
+            File.WriteAllText(filePath, content);
+            Debug.Log($"[PoseCompletionTracker] Level 2 data saved to: {filePath}");
+        }
+        catch
+        {
+            Debug.LogError("[PoseCompletionTracker] Failed to save level data.");
+        }
     }
 }

@@ -202,13 +202,18 @@ public class RockPaperScissors : MonoBehaviour
     // Save the total time to a .txt file
     private void SaveTimeToFile()
     {
-        string filePath = "Assets/TotalTime.txt";  // Path to save the file
-        string timeToSave = "Total Time: " + totalTime.ToString("F2") + " seconds";  // Format the time
-
-        // Append the time to the file (or create the file if it doesn't exist)
-        File.AppendAllText(filePath, timeToSave + "\n");
-
-        Debug.Log("Time saved to file: " + timeToSave);
+        string ts = System.DateTime.Now.ToString("yyyyMMdd_HHmmss");
+        string path = Path.Combine(Application.persistentDataPath, $"Level03_{ts}.txt");
+        string timeToSave = $"Level03 completed in {totalTime:F2} seconds ({totalTime / 60f:F2} minutes) | {ts}";
+        try
+        {
+            File.WriteAllText(path, timeToSave);
+            Debug.Log($"[RockPaperScissors] Time saved to file: {path}");
+        }
+        catch
+        {
+            Debug.LogError("[RockPaperScissors] Failed to save time.");
+        }
     }
 
     // This method is called when the gesture is detected

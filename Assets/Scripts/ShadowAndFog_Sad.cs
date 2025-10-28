@@ -3,32 +3,32 @@ using UnityEngine.Rendering;
 
 public class ShadowAndFog_Sad : MonoBehaviour
 {
-    [Header("Skybox")]
-    public Material sadSkybox; // Optional, assign if you have one
-    public Light mainLight;    // Assign main directional light in Inspector
+    [Tooltip("Assign a soft/bright skybox material here")]
+    public Material sadSkybox;
+
+    [Tooltip("Reference to the default skybox material so OnDisable can revert to default")]
+    public Material defaultSkybox;
+
     private bool applied = false;
 
     void OnEnable()
     {
         if (applied) return;
-        EnvironmentLightingManager.SaveGlobalSettings();
 
-        if (sadSkybox != null) RenderSettings.skybox = sadSkybox;
-        RenderSettings.ambientMode = AmbientMode.Flat;
-        RenderSettings.ambientLight = new Color(0.44f, 0.50f, 0.56f) * 0.55f; // #708090 * intensity
+        // Apply bright-but-subtle-sad environment settings
+        RenderSettings.skybox = sadSkybox;
+        RenderSettings.subtractiveShadowColor = new Color(0.4627451f, 0.5411765f, 0.6784314f); // soft blue-ish (#768AAE)
+        RenderSettings.ambientMode = AmbientMode.Skybox;
+        RenderSettings.ambientIntensity = 0.85f; // slightly softer than default
+        RenderSettings.reflectionIntensity = 1f;
+        RenderSettings.defaultReflectionMode = DefaultReflectionMode.Skybox;
+        RenderSettings.defaultReflectionResolution = 128;
+
+        // Gentle fog for softness (low density)
         RenderSettings.fog = true;
-        RenderSettings.fogColor = new Color(0.50f, 0.55f, 0.60f); // #7F8C99
+        RenderSettings.fogColor = new Color(0.75f, 0.80f, 0.85f); // soft bluish haze
         RenderSettings.fogMode = FogMode.ExponentialSquared;
-        RenderSettings.fogDensity = 0.10f;
-
-        if (mainLight != null)
-        {
-            mainLight.color = new Color(0.8f, 0.86f, 0.92f);
-            mainLight.intensity = 1.0f;
-            mainLight.shadows = LightShadows.Soft;
-            mainLight.shadowStrength = 0.85f;
-            mainLight.lightmapBakeType = LightmapBakeType.Mixed;
-        }
+        RenderSettings.fogDensity = 0.05f;
 
         applied = true;
     }
@@ -36,7 +36,17 @@ public class ShadowAndFog_Sad : MonoBehaviour
     void OnDisable()
     {
         if (!applied) return;
-        EnvironmentLightingManager.RestoreGlobalSettings();
+
+        // Revert to default settings as defined in DefaultLighting
+        RenderSettings.skybox = defaultSkybox;
+        RenderSettings.subtractiveShadowColor = new Color(0.4196079f, 0.4784314f, 0.6313726f); // #6B7AA1
+        RenderSettings.ambientMode = AmbientMode.Skybox;
+        RenderSettings.ambientIntensity = 1f;
+        RenderSettings.reflectionIntensity = 1f;
+        RenderSettings.defaultReflectionMode = DefaultReflectionMode.Skybox;
+        RenderSettings.defaultReflectionResolution = 128;
+        RenderSettings.fog = false;
+
         applied = false;
     }
 }

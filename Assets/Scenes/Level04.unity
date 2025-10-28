@@ -8852,6 +8852,77 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746571083}
   m_CullTransparentMesh: 1
+--- !u!1 &1784150242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1784150245}
+  - component: {fileID: 1784150244}
+  - component: {fileID: 1784150243}
+  m_Layer: 0
+  m_Name: EmotionModel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1784150243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784150242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab1c4e497c8fcf44893c43315c33915f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  emotionSource: {fileID: 1784150244}
+  baseFileName: valence_arousal_log
+  flushIntervalSeconds: 1
+  debugLog: 0
+--- !u!114 &1784150244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784150242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21a3678f28606e3449c539913c4deb55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onnxModelAsset: {fileID: 5022602860645237092, guid: f32b54efe6f9be04e9ec2e640b9ea7c0, type: 3}
+  meanFile: {fileID: 4900000, guid: 316205282e111d546b79d4ceac904883, type: 3}
+  scaleFile: {fileID: 4900000, guid: 4d44d32555bf2984d9475cdde90bf574, type: 3}
+  faceExpressions: {fileID: 1530675758}
+  featureExpressions: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f000000100000001100000012000000130000001400000015000000160000001700000018000000190000001a0000001b0000001c0000001d0000001e0000001f000000200000002100000022000000230000002400000025000000260000002700000028000000290000002a0000002b0000002c0000002d0000002e0000002f000000300000003100000032000000330000003400000035000000360000003700000038000000390000003a0000003b0000003c0000003d0000003e000000
+  valence: 0
+  arousal: 0
+  emotionCategory: 
+  currentLevel: 
+  timestamp: 
+--- !u!4 &1784150245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1784150242}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.9160004, y: 1.1459999, z: 11.816}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1786451306
 GameObject:
   m_ObjectHideFlags: 0
@@ -11196,3 +11267,4 @@ SceneRoots:
   - {fileID: 14847403}
   - {fileID: 1572797860}
   - {fileID: 1935670989}
+  - {fileID: 1784150245}
